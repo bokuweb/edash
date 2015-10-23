@@ -52,5 +52,9 @@ defmodule Edash do
       else flatten t, is_deep, acc ++ [h] end
     end
   end
+
+  def last(list) do
+    Enum.reverse(list) |> hd
+  end
 end
 

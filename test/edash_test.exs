@@ -29,8 +29,13 @@ defmodule EdashTest do
   test "flatten/2" do
     assert(Edash.flatten([1, [2, [3],[4]],[5]], true) === [1, 2, 3, 4, 5])
   end
+
+  test "last/1" do
+    assert(Edash.last([1, 2, 3]) === 3)
+  end
   
   test "test" do
+    IO.inspect Enum.find_index([2, 3, 4], fn(x) -> rem(x, 2) == 0 end)
     #Enum.map([1, [2, [3]]], fn(x) -> IO.inspect x end)
     #IO.inspect hd([1,2,3])
     #users = [
