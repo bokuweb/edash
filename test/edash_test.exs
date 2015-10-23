@@ -33,6 +33,10 @@ defmodule EdashTest do
   test "last/1" do
     assert(Edash.last([1, 2, 3]) === 3)
   end
+
+  test "includes/1" do
+    assert(Edash.includes([1, 2, 3], 3) === true)
+  end
   
   test "test" do
     IO.inspect Enum.find_index([2, 3, 4], fn(x) -> rem(x, 2) == 0 end)

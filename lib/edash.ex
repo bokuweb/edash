@@ -53,8 +53,19 @@ defmodule Edash do
     end
   end
 
+  def intersection(list) do
+    Enum.reverse(list) |> hd
+  end
+
   def last(list) do
     Enum.reverse(list) |> hd
   end
+
+  def includes([], _), do: false
+  def includes(list, target) do
+    if h === target do true
+    else includes(t, target) end
+  end
+
 end
 
