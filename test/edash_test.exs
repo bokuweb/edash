@@ -21,4 +21,23 @@ defmodule EdashTest do
   test "fill/4" do
     assert(Edash.fill([4, 6, 8], "*", 1, 2) === [4, "*", 8])
   end
+
+  test "flatten/1" do
+    assert(Edash.flatten([1, [2, [3],[4]],[5]]) === [1, 2, [3], [4], 5])
+  end
+
+  test "flatten/2" do
+    assert(Edash.flatten([1, [2, [3],[4]],[5]], true) === [1, 2, 3, 4, 5])
+  end
+  
+  test "test" do
+    #Enum.map([1, [2, [3]]], fn(x) -> IO.inspect x end)
+    #IO.inspect hd([1,2,3])
+    #users = [
+    #  { :user, "barney",  :active, false },
+    #  { :user, "fred",    :active, false },
+    #  { :user, "pebbles", :active, true }
+    #]
+    #Enum.find_index(users, fn(x) -> IO.inspect x end)
+  end
 end

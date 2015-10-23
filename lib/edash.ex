@@ -22,21 +22,34 @@ defmodule Edash do
 
   def fill(list, value, start) do
     Enum.with_index(list) |> Enum.map fn {k, v} ->
-      if v >= start do
-        value
-      else
-        k
-      end
+      if v >= start do value
+      else k end
     end
   end
 
-  def fill(list, value, start, a) do
+  def fill(list, value, start, end_length) do
     Enum.with_index(list) |> Enum.map fn {k, v} ->
-      if v >= start and v < a do
-        value
-      else
-        k
-      end
+      if v >= start and v < end_length do value
+      else k end
+    end
+  end
+
+  def flatten(list) do
+    flatten list, false, []
+  end
+
+  def flatten(list, is_deep) do
+    flatten list, true, []
+  end
+
+  def flatten([], is_deep, acc), do: acc
+  def flatten([h|t], is_deep, acc) do
+    if is_deep do
+      if is_list(h) do flatten h ++ t, is_deep, acc
+      else flatten t, is_deep, acc ++ [h] end
+    else
+      if is_list(h) do flatten t, is_deep, acc ++ h
+      else flatten t, is_deep, acc ++ [h] end
     end
   end
 end
