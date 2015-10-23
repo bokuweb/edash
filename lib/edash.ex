@@ -1,12 +1,4 @@
 defmodule Edash do
-  def chunk([h|t]), do: [[h],t]
-  def chunk(list, size), do: chunk(list, size, [], [])
-  def chunk(_, 0, acc1, acc2), do: [acc1, acc2]
-  def chunk([], _, acc1, acc2), do: [acc1, acc2]
-  def chunk([h|t], size, acc1, acc2) do
-    if size >= 0, do: chunk(t, size-1, acc1 ++ [h], t)
-    else []
-  end
 
   def compact(list) do
     Enum.filter list, fn x ->
